@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.history
+node_modules
+dist
+index.html

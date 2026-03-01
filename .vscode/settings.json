@@ -1,0 +1,74 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.renderWhitespace": "none",
+  "editor.renderControlCharacters": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.fontLigatures": true,
+  "editor.detectIndentation": false,
+  "explorer.compactFolders": false,
+  "typescript.preferences.importModuleSpecifier": "project-relative",
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "html.format.wrapAttributes": "force",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "editor.formatOnSave": "explicit"
+    }
+  },
+  "explorerExclude.backup": {},
+  "diffEditor.ignoreTrimWhitespace": false,
+  "explorer.confirmDelete": false,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "eslint.useESLintClass": true,
+  "eslint.useFlatConfig": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.history": true,
+    "**/docs": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/.husky": true,
+    "**/.claude": true,
+    "**/.cursor": true,
+    "**/.vscode": true
+  },
+  "search.exclude": {
+    "**/.history": true,
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/.cursor": true,
+    "**/.claude": true,
+    "**/.vscode": true,
+    "**/docs": true,
+    "**/dist": true
+  },
+  "material-icon-theme.activeIconPack": "angular_ngrx",
+  "nxConsole.generateAiAgentRules": true
+}

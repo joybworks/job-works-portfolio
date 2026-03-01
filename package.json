@@ -1,0 +1,21 @@
+{
+  "name": "joyb-works-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "JoyB Works portfolio — static site for GitHub Pages",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "serve": "node scripts/serve.js",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.0",
+    "concurrently": "^9.1.0",
+    "husky": "^9.1.7",
+    "chokidar": "^4.0.1",
+    "nodemon": "^3.1.9",
+    "clean-css": "^5.3.3",
+    "terser": "^5.36.0",
+    "html-minifier-terser": "^7.2.0"
+  }
+}

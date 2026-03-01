@@ -1,0 +1,259 @@
+/* ============================================================
+   JoyB Works Portfolio — base.css
+   Variables · Reset · Utilities · Buttons
+   ============================================================ */
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+  color-scheme: light dark;
+
+  /* Brand palette (theme-invariant) */
+  --c-red: #EF4040;
+  --c-magenta: #C21292;
+  --c-green: #1DCE64;
+  --c-orange: #FFA732;
+  --c-pink: #EAB7DC;
+
+  /* Backgrounds */
+  --bg-base: light-dark(#f8f8f8, #0c0c0c);
+  --bg-surface: light-dark(#efefef, #121212);
+  --bg-card: light-dark(#ffffff, #1a1a1a);
+  --bg-card-2: light-dark(#f4f4f4, #202020);
+  --bg-border: light-dark(#00000017, #ffffff12);
+
+  /* Text */
+  --text-primary: light-dark(#111111, #f0f0f0);
+  --text-secondary: light-dark(#555555, #8a8a8a);
+  --text-muted: light-dark(#999999, #505050);
+  --text-link: #EF4040;
+
+  /* Navbar scrolled glass */
+  --nav-bg: light-dark(#f8f8f8eb, #0c0c0ceb);
+
+  /* Gradients */
+  --grad-primary: linear-gradient(135deg, #EF4040 0%, #C21292 100%);
+  --grad-green: linear-gradient(135deg, #1DCE64 0%, #FFA732 100%);
+  --grad-subtle: linear-gradient(135deg,
+      light-dark(#ef404012, #ef404026) 0%,
+      light-dark(#c2129212, #c2129226) 100%);
+
+  /* Layout */
+  /* --container: 1200px; */
+  --container: 85vw;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+
+  /* Typography */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Transitions */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --tr: all 0.3s var(--ease);
+}
+
+/* ── Reset & Base ───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font);
+}
+
+textarea,
+input {
+  font-family: var(--font);
+}
+
+/* ── Utility ────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 110px 0;
+  position: relative;
+}
+
+.section-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-red);
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.section-title.centered,
+.section-label.centered,
+.section-sub.centered {
+  text-align: center;
+}
+
+.section-sub {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 56px;
+}
+
+.grad-text {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Logo light/dark swap ───────────────────────────────────── */
+.logo-light {
+  display: block;
+}
+
+.logo-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo-light {
+    display: none;
+  }
+
+  .logo-dark {
+    display: block;
+  }
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 30px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: var(--tr);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--grad-primary);
+  color: #fff;
+  box-shadow: 0 4px 20px #ef404059;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px #ef404080;
+}
+
+.btn-outline {
+  border: 1.5px solid var(--bg-border);
+  color: var(--text-primary);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  border-color: light-dark(#00000033, #ffffff40);
+  background: light-dark(#0000000a, #ffffff0a);
+  transform: translateY(-2px);
+}
+
+.btn-full {
+  width: 100%;
+  justify-content: center;
+}
+
+.btn svg,
+.icon-send {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Scroll animations (base) ───────────────────────────────── */
+[data-animate] {
+  opacity: 0;
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+[data-animate="fade-up"] {
+  transform: translateY(40px);
+}
+
+[data-animate="fade-down"] {
+  transform: translateY(-40px);
+}
+
+[data-animate="fade-left"] {
+  transform: translateX(-40px);
+}
+
+[data-animate="fade-right"] {
+  transform: translateX(40px);
+}
+
+[data-animate].in-view {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ── Global responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+}

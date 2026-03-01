@@ -1,0 +1,135 @@
+/* ── Navbar ─────────────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 18px 0;
+  transition: var(--tr);
+}
+
+.navbar.scrolled {
+  background: var(--nav-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--bg-border);
+}
+
+.nav-container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: var(--tr);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--grad-primary);
+  transition: width 0.3s var(--ease);
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  background: var(--grad-primary) !important;
+  color: #fff !important;
+  padding: 9px 20px;
+  border-radius: var(--radius-sm);
+}
+
+.nav-cta::after {
+  display: none !important;
+}
+
+.nav-cta:hover {
+  opacity: 0.9;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: var(--tr);
+}
+
+/* ── Navbar responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-base);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 1.4rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+    z-index: 1001;
+    position: relative;
+  }
+
+  .nav-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}

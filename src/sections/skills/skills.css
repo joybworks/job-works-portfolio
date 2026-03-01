@@ -1,0 +1,226 @@
+/* ── Skills ─────────────────────────────────────────────────── */
+.skills {
+  background: var(--bg-base);
+}
+
+.skills-block {
+  margin-bottom: 60px;
+}
+
+.skills-block:last-child {
+  margin-bottom: 0;
+}
+
+.skills-block-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot-red {
+  background: var(--c-red);
+}
+
+.dot-green {
+  background: var(--c-green);
+}
+
+.dot-orange {
+  background: var(--c-orange);
+}
+
+.dot-magenta {
+  background: var(--c-magenta);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  justify-content: center;
+  gap: 12px;
+}
+
+.skills-grid-minor {
+  grid-template-columns: repeat(auto-fill, minmax(94px, 1fr));
+  justify-content: center;
+}
+
+.skills-grid-arch {
+  grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
+  justify-content: center;
+}
+
+.skill-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius-md);
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: var(--tr);
+  cursor: default;
+  box-shadow: 0 1px 4px light-dark(#0000000f, #00000026);
+}
+
+.skill-card:hover {
+  border-color: #ef404059;
+  background: var(--bg-card-2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px light-dark(#0000001a, #00000066);
+}
+
+.skill-card img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.skill-card-sm img {
+  width: 27px;
+  height: 27px;
+}
+
+.skill-card-sm {
+  padding: 15px 10px;
+}
+
+.skill-card span {
+  font-size: 0.70rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.skill-card:hover span {
+  color: var(--text-primary);
+}
+
+/* icons that need inversion — dark mode only */
+@media (prefers-color-scheme: dark) {
+  .icon-invert {
+    filter: invert(1) brightness(0.85);
+  }
+}
+
+.skill-card-text .skill-icon-text {
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+/* Architectural skill cards */
+.arch-card {
+  padding: 19px 14px;
+}
+
+.arch-card:hover {
+  border-color: #c2129259;
+}
+
+.arch-icon {
+  font-size: 1.36rem;
+  line-height: 1;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: light-dark(#c2129212, #c212921a);
+  border-radius: var(--radius-sm);
+  border: 1px solid light-dark(#c2129226, #c2129233);
+}
+
+/* Previously Worked With — compact tag cloud */
+.prev-tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 10px;
+}
+
+.prev-tag {
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  background: var(--bg-card-2);
+  border: 1px solid var(--bg-border);
+  color: var(--text-muted);
+  transition: var(--tr);
+}
+
+.prev-tag:hover {
+  color: var(--text-secondary);
+  border-color: #ffa73240;
+}
+
+/* ── Skills card stagger delays ─────────────────────────────── */
+.skills-grid .skill-card:nth-child(1) {
+  transition-delay: 0.05s;
+}
+
+.skills-grid .skill-card:nth-child(2) {
+  transition-delay: 0.10s;
+}
+
+.skills-grid .skill-card:nth-child(3) {
+  transition-delay: 0.15s;
+}
+
+.skills-grid .skill-card:nth-child(4) {
+  transition-delay: 0.20s;
+}
+
+.skills-grid .skill-card:nth-child(5) {
+  transition-delay: 0.25s;
+}
+
+.skills-grid .skill-card:nth-child(6) {
+  transition-delay: 0.30s;
+}
+
+.skills-grid .skill-card:nth-child(7) {
+  transition-delay: 0.35s;
+}
+
+.skills-grid .skill-card:nth-child(8) {
+  transition-delay: 0.40s;
+}
+
+.skills-grid .skill-card:nth-child(9) {
+  transition-delay: 0.45s;
+}
+
+.skills-grid .skill-card:nth-child(10) {
+  transition-delay: 0.50s;
+}
+
+.skills-grid .skill-card:nth-child(11) {
+  transition-delay: 0.55s;
+}
+
+.skills-grid .skill-card:nth-child(12) {
+  transition-delay: 0.60s;
+}
+
+/* ── Skills responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(85px, 100px));
+  }
+
+  .skills-grid-arch {
+    grid-template-columns: repeat(auto-fill, minmax(119px, 138px));
+  }
+}

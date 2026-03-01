@@ -1,0 +1,468 @@
+/* ── Hero ───────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
+}
+
+.glow-red {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, light-dark(#ef404012, #ef40401f) 0%, transparent 70%);
+  top: -200px;
+  right: -100px;
+  animation-delay: 0s;
+}
+
+.glow-magenta {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, light-dark(#c212920d, #c2129214) 0%, transparent 70%);
+  bottom: -100px;
+  left: -100px;
+  animation-delay: -4s;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-30px) scale(1.05);
+  }
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid #1dce644d;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--c-green);
+  background: #1dce6412;
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-green);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+.hero-name {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.title-divider {
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+
+.hero-desc em {
+  color: var(--text-primary);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.hero-contact-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.break-flow {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  border: 1px solid var(--bg-border);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  transition: var(--tr);
+}
+
+.contact-chip svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.contact-chip:hover {
+  border-color: light-dark(#0000002e, #ffffff33);
+  color: var(--text-primary);
+}
+
+.contact-chip.location {
+  cursor: default;
+}
+
+/* Social chips colour hints */
+.chip-linkedin:hover {
+  border-color: #0a66c280;
+  color: #0A66C2;
+}
+
+.chip-github:hover {
+  border-color: light-dark(#00000066, #ffffff66);
+}
+
+.chip-so:hover {
+  border-color: #f4802480;
+  color: #F48024;
+}
+
+/* ── Hero Photo — circular pop-out ─────────────────────────── */
+.hero-photo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Frame: 360×440 — circle(300) sits at bottom, photo pops above */
+.hero-photo-frame {
+  position: relative;
+  width: 360px;
+  height: 440px;
+}
+
+/* Subtle glow circle base — hint of brand colour, not solid */
+.photo-circle-base {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%,
+      #ef404052 0%,
+      #c2129233 38%,
+      #c212920f 68%,
+      transparent 100%);
+  z-index: 1;
+  box-shadow: 0 20px 60px #ef404024;
+}
+
+@media (prefers-color-scheme: dark) {
+  .photo-circle-base {
+    background: radial-gradient(circle at 50% 50%,
+        #ef40406b 0%,
+        #c2129247 38%,
+        #c2129214 68%,
+        transparent 100%);
+    box-shadow: 0 20px 60px #ef40403d;
+  }
+}
+
+/* Photo — transparent PNG, pops out from circle top.
+   clip-path maths (photo 280×420, circle r=150 centred at photo(140,270)):
+   circle hits photo left/right edge at y = 270+√(150²-140²) ≈ 323.85
+   → arc from (280,323.85) clockwise to (0,323.85) clips the bottom to the circle curve */
+.hero-photo {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 420px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 0;
+  border: none;
+  z-index: 2;
+  filter: drop-shadow(0 16px 40px #0000002e);
+  clip-path: path('M 0 0 L 280 0 L 280 323.85 A 150 150 0 0 1 0 323.85 Z');
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero-photo {
+    filter: drop-shadow(0 16px 40px #00000073);
+  }
+}
+
+/* Spinning rings — centered on circle center (frame_h - circle_h/2 = 440-150=290px from top) */
+.photo-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  top: 290px;
+  left: 50%;
+  z-index: 0;
+  animation: spin linear infinite;
+}
+
+.ring-1 {
+  width: 350px;
+  height: 350px;
+  border-top-color: #ef404066;
+  border-right-color: #c2129233;
+  animation-duration: 14s;
+}
+
+.ring-2 {
+  width: 400px;
+  height: 400px;
+  border-bottom-color: #1dce6440;
+  border-left-color: #ffa73226;
+  animation-duration: 20s;
+  animation-direction: reverse;
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Floating badges */
+.photo-badge {
+  position: absolute;
+  z-index: 3;
+  background: var(--bg-card-2);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px light-dark(#0000001a, #00000066);
+}
+
+.badge-exp {
+  top: 30px;
+  right: -16px;
+}
+
+.badge-arch {
+  bottom: 200px;
+  left: -20px;
+}
+
+.badge-num {
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.badge-num sup {
+  font-size: 0.9rem;
+}
+
+.badge-icon {
+  font-size: 1.5rem;
+}
+
+.badge-label {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* Hero scroll hint */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: scrollhint 2s ease-in-out infinite;
+}
+
+.scroll-line {
+  width: 1.5px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--c-red), transparent);
+}
+
+@keyframes scrollhint {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(5px);
+  }
+}
+
+/* ── Hero responsive ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .hero-photo-wrap {
+    order: -1;
+  }
+
+  .hero-photo-frame {
+    width: 300px;
+    height: 360px;
+  }
+
+  .ring-1 {
+    width: 290px;
+    height: 290px;
+  }
+
+  .ring-2 {
+    width: 330px;
+    height: 330px;
+  }
+
+  .ring-1,
+  .ring-2 {
+    top: 210px;
+    /* frame_h(360) - circle_h/2(150) */
+  }
+
+  .badge-exp {
+    right: -10px;
+  }
+
+  .badge-arch {
+    left: -10px;
+    bottom: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-name {
+    font-size: 3rem;
+  }
+
+  .hero-title {
+    font-size: 1.2rem;
+  }
+
+  .break-flow {
+    display: none;
+  }
+
+  .hero-photo-frame {
+    width: 280px;
+    height: 340px;
+  }
+
+  .ring-1,
+  .ring-2 {
+    top: 190px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-contact-strip {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .break-flow {
+    display: none;
+  }
+}
