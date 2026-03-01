@@ -155,6 +155,9 @@ async function run() {
   const faviconDir = path.join(ROOT, 'assets', 'favicon');
   if (fs.existsSync(faviconDir)) copyDir(faviconDir, OUT);
 
+  const othersDir = path.join(ROOT, 'assets', 'others');
+  if (fs.existsSync(othersDir)) copyDir(othersDir, OUT);
+
   const cname = path.join(ROOT, 'CNAME');
   if (fs.existsSync(cname)) fs.copyFileSync(cname, path.join(OUT, 'CNAME'));
 

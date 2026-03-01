@@ -1,0 +1,33 @@
+# robots.txt — joyb.works
+# https://www.robotstxt.org/robotstxt.html
+
+# Allow all crawlers full access
+User-agent: *
+Allow: /
+
+# Block access to build artifacts and source
+Disallow: /assets/css/
+Disallow: /assets/js/
+
+# Sitemap location
+Sitemap: https://joyb.works/sitemap.xml
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# LinkedIn preview crawler
+User-agent: LinkedInBot
+Allow: /
+
+# Twitter/X card crawler
+User-agent: Twitterbot
+Allow: /
+
+# Facebook open graph crawler
+User-agent: facebookexternalhit
+Allow: /
