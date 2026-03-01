@@ -16,9 +16,9 @@ contactForm.addEventListener('submit', function (e) {
 
   const mailtoSubject = encodeURIComponent(subject || `Portfolio Enquiry from ${name}`);
   const mailtoBody = encodeURIComponent(
-    `Hi Joy,\n\nMy name is ${name} and I'd like to get in touch.\n\n${message}\n\nBest regards,\n${name}\n${email}`
+    `Hello JoyB Works,\n\nMy name is ${name} and I'd like to get in touch.\n\n${message}\n\nBest regards,\n${name}\n${email}`
   );
-  window.location.href = `mailto:me@joyb.works?subject=${mailtoSubject}&body=${mailtoBody}`;
+  window.location.href = `mailto:hello@joyb.works?subject=${mailtoSubject}&body=${mailtoBody}`;
 
   showFormFeedback('Opening your email client...', 'success');
   contactForm.reset();

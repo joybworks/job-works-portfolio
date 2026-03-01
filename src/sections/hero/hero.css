@@ -351,7 +351,7 @@
 
 /* Hero scroll hint */
 .hero-scroll-hint {
-  position: absolute;
+  position: fixed;
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
@@ -435,6 +435,9 @@
 
   .hero-title {
     font-size: 1.2rem;
+    text-align: center;
+    flex-wrap: initial;
+    white-space: initial;
   }
 
   .break-flow {
