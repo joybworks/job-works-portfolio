@@ -10,11 +10,19 @@
 }
 
 .navbar.scrolled {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--bg-border);
+}
+
+.navbar.scrolled::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: var(--nav-bg);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  padding: 12px 0;
-  border-bottom: 1px solid var(--bg-border);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .nav-container {
