@@ -78,8 +78,8 @@ function buildCss() {
 /* ── JS ──────────────────────────────────────────────────────── */
 function buildJs() {
   const parts = [
-    // global.js first — has 'use strict' + shared observers
-    readIfExists(path.join(SRC, 'global.js')),
+    // base.js first — has 'use strict' + shared observers
+    readIfExists(path.join(SRC, 'base.js')),
     // section-specific JS in render order
     ...SECTION_ORDER
       .map(name => readIfExists(sectionFile(name, 'js')))

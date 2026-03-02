@@ -224,3 +224,13 @@
     grid-template-columns: repeat(auto-fill, minmax(119px, 138px));
   }
 }
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+  }
+
+  .skills-grid-arch {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}

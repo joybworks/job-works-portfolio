@@ -66,6 +66,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  overflow-x: hidden;
 }
 
 body {
@@ -247,12 +248,20 @@ input {
 
 /* ── Global responsive ──────────────────────────────────────── */
 @media (max-width: 768px) {
+  :root {
+    --container: 90vw;
+  }
+
   .section {
     padding: 80px 0;
   }
 }
 
 @media (max-width: 480px) {
+  :root {
+    --container: 100vw;
+  }
+
   .container {
     padding: 0 16px;
   }
