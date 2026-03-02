@@ -193,6 +193,31 @@
   color: var(--c-red);
 }
 
+.btn-spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 2px solid var(--bg-border);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: btn-spin 0.7s linear infinite;
+}
+
+.btn.is-loading .btn-spinner {
+  display: inline-block;
+}
+
+.btn.is-loading .icon-send {
+  display: none;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* ── Contact responsive ──────────────────────────────────────── */
 @media (max-width: 1024px) {
   .contact-grid {
