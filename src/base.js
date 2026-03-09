@@ -1,5 +1,71 @@
 'use strict';
 
+// ── GA4 Analytics ──────────────────────────────────────────────
+function gaEvent(name, params) {
+  if (typeof gtag === 'function') {
+    gtag('event', name, params);
+  }
+}
+
+// Section view tracking (fires once per section per page load)
+const sectionViewed = new Set();
+const sectionViewObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting || sectionViewed.has(entry.target.id)) return;
+    sectionViewed.add(entry.target.id);
+    gaEvent('view_section', { section_name: entry.target.id });
+  });
+}, { threshold: 0.4 });
+
+document.querySelectorAll('section[id]').forEach((s) => sectionViewObserver.observe(s));
+
+// Project card view tracking
+document.querySelectorAll('.project-card').forEach((card) => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const name = entry.target.querySelector('.project-name');
+      gaEvent('view_project', { project_name: name ? name.textContent.trim() : 'unknown' });
+      observer.disconnect();
+    });
+  }, { threshold: 0.3 });
+  observer.observe(card);
+});
+
+// Link click tracking: external, mailto, tel, downloads
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a');
+  if (!a || !a.href) return;
+  const href = a.getAttribute('href') || '';
+  const text = (a.textContent || '').trim().slice(0, 100);
+
+  if (a.hasAttribute('download') || /\.(pdf|docx?)$/i.test(href)) {
+    const file = (a.getAttribute('download') || href.split('/').pop() || 'file').split('?')[0];
+    gaEvent('file_download', { file_name: file, link_text: text });
+    return;
+  }
+  if (href.startsWith('mailto:')) {
+    gaEvent('contact_click', { method: 'email', link_text: text });
+    return;
+  }
+  if (href.startsWith('tel:')) {
+    gaEvent('contact_click', { method: 'phone', link_text: text });
+    return;
+  }
+  if (href.startsWith('http') && !href.includes(window.location.hostname)) {
+    const platform = href.includes('linkedin') ? 'linkedin' : href.includes('github') ? 'github' : href.includes('stackoverflow') ? 'stackoverflow' : 'external';
+    gaEvent('outbound_click', { link_url: href, link_text: text, platform });
+  }
+});
+
+// CTA clicks (Hire Me, View Work, nav CTAs)
+document.querySelectorAll('a[href="#contact"]:not(.nav-cta), .nav-cta, a[href="#projects"].btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const label = btn.classList.contains('nav-cta') ? 'Hire Me (nav)' : btn.getAttribute('href') === '#contact' ? 'Hire Me' : 'View Work';
+    gaEvent('cta_click', { cta_label: label });
+  });
+});
+
 // ── Scroll-reveal animations ───────────────────────────────────
 const animatedEls = document.querySelectorAll('[data-animate]');
 const skillCards = document.querySelectorAll('.skill-card');

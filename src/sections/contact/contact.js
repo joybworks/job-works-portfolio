@@ -39,6 +39,7 @@ contactForm.addEventListener('submit', async function (e) {
     const data = await response.json();
 
     if (response.ok && data.success) {
+      gaEvent('form_submit', { form_name: 'contact', form_destination: 'web3forms' });
       showFormFeedback('Your message has been sent. I\'ll get back to you soon.', 'success');
       contactForm.reset();
     } else {
@@ -54,6 +55,7 @@ contactForm.addEventListener('submit', async function (e) {
 });
 
 function fallbackToMailto(name, email, subject, message) {
+  if (typeof gtag === 'function') gtag('event', 'form_submit', { form_name: 'contact', form_destination: 'mailto' });
   const mailtoSubject = encodeURIComponent(subject || `Enquiry from ${name}`);
   const mailtoBody = encodeURIComponent(
     `Hello JoyB Works,\n\nMy name is ${name} and I'd like to get in touch.\n\n${message}\n\nBest regards,\n${name}\n${email}`
