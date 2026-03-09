@@ -5,7 +5,7 @@
 User-agent: *
 Allow: /
 
-# Block access to build artifacts and source
+# Block access to build artifacts
 Disallow: /assets/css/
 Disallow: /assets/js/
 

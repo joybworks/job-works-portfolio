@@ -120,7 +120,10 @@ async function run() {
     jsFile = 'main.js';
   } else {
     cssContent = new CleanCSS({ level: 2 }).minify(cssRaw).styles;
-    const jsResult = await terser.minify(jsRaw, { compress: true, mangle: true });
+    const jsResult = await terser.minify(jsRaw, {
+      compress: true,
+      mangle: { toplevel: true },
+    });
     jsContent = jsResult.code;
     const cssId = contentHash(cssContent);
     const jsId = contentHash(jsContent);
@@ -149,14 +152,27 @@ async function run() {
   }
   fs.writeFileSync(path.join(OUT, 'index.html'), html, 'utf8');
 
-  copyDir(path.join(ROOT, 'assets', 'images'), path.join(OUT, 'assets', 'images'));
-  copyDir(path.join(ROOT, 'assets', 'logos'), path.join(OUT, 'assets', 'logos'));
+  const copyAssets = [
+    {
+      dest: path.join(OUT, 'assets'),
+      content: ['images', 'logos'],
+      type: 'exact'
+    },
+    {
+      dest: path.join(OUT),
+      content: ['favicon', 'others', 'artifacts'],
+      type: 'dump'
+    }
+  ];
 
-  const faviconDir = path.join(ROOT, 'assets', 'favicon');
-  if (fs.existsSync(faviconDir)) copyDir(faviconDir, OUT);
-
-  const othersDir = path.join(ROOT, 'assets', 'others');
-  if (fs.existsSync(othersDir)) copyDir(othersDir, OUT);
+  copyAssets.forEach(asset => {
+    asset.content.forEach(content => {
+      copyDir(
+        path.join(ROOT, 'assets', content),
+        asset.type === 'exact' ? path.join(asset.dest, content) : asset.dest
+      );
+    });
+  });
 
   const cname = path.join(ROOT, 'CNAME');
   if (fs.existsSync(cname)) fs.copyFileSync(cname, path.join(OUT, 'CNAME'));

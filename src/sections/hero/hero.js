@@ -1,4 +1,4 @@
-// ── Cursor glow on hero ────────────────────────────────────────
+// ── Hero: cursor glow ───────────────────────────────────────────
 const hero = document.querySelector('.hero');
 if (hero && window.matchMedia('(hover: hover)').matches) {
   hero.addEventListener('mousemove', (e) => {
@@ -9,3 +9,6 @@ if (hero && window.matchMedia('(hover: hover)').matches) {
     hero.style.setProperty('--my', `${y}%`);
   }, { passive: true });
 }
+
+// ── Hero: init download dropdown in context ─────────────────────
+initDropdown('.hero');

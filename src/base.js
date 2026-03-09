@@ -73,3 +73,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ── Dropdown (reusable) ───────────────────────────────────────
+function initDropdown(container) {
+  const root = typeof container === 'string' ? document.querySelector(container) : container;
+  if (!root) return;
+  root.querySelectorAll('.btn-dropdown').forEach((dropdown) => {
+    const trigger = dropdown.querySelector('.dropdown-trigger');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    if (!trigger || !menu) return;
+    const close = () => {
+      dropdown.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+    };
+    const toggle = () => {
+      const isOpen = dropdown.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', isOpen);
+    };
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggle();
+    });
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) close();
+    });
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => close());
+    });
+  });
+}

@@ -137,6 +137,11 @@
   margin-bottom: 40px;
 }
 
+.hero-actions .btn-dropdown svg {
+  width: 18px;
+  height: 18px;
+}
+
 .hero-contact-strip {
   display: flex;
   flex-wrap: wrap;
