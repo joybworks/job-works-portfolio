@@ -27,9 +27,11 @@
 
   --text-primary: light-dark(#111111, #f0f0f0);
   --text-secondary: light-dark(#555555, #8a8a8a);
-  --text-muted: light-dark(#999999, #505050);
+  /* Dark: #505050 on #0c0c0c fails WCAG AA (~2.4:1); ~#7a7a7a reaches ≥4.5:1 */
+  --text-muted: light-dark(#999999, #7a7a7a);
 
   --nav-bg: light-dark(#f8f8f8eb, #0c0c0ceb);
+
 
   /* ── Gradients ────────────────────────────────────────────── */
   --grad-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
@@ -145,9 +147,11 @@
 
 html {
   color-scheme: light dark;
-  /* Document scroller is often the root element; pair with body for consistent snap. */
   scroll-padding-top: 80px;
+  scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /*
@@ -158,9 +162,6 @@ body {
   min-height: 100%;
   min-height: 100dvh;
   overflow-x: hidden;
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
-  scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -465,10 +466,6 @@ html[theme="system"] .img-swap-dark {
 
 @media (prefers-reduced-motion: reduce) {
   html {
-    scroll-snap-type: none;
-  }
-
-  body {
     scroll-snap-type: none;
     scroll-behavior: auto;
   }

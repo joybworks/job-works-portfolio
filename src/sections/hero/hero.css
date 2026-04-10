@@ -53,6 +53,10 @@
   align-items: center;
 }
 
+.hero-inner > * {
+  min-width: 0;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
