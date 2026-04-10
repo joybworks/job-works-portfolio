@@ -31,7 +31,7 @@
   position: relative;
   transition: var(--tr);
   overflow: hidden;
-  box-shadow: 0 2px 8px light-dark(#0000000f, #00000026);
+  box-shadow: var(--shadow-sm);
 }
 
 .project-card::before {
@@ -47,9 +47,9 @@
 }
 
 .project-card:hover {
-  border-color: #ef404033;
+  border-color: var(--color-primary-border-soft);
   transform: translateY(-6px);
-  box-shadow: 0 20px 60px light-dark(#0000001a, #00000066);
+  box-shadow: var(--shadow-xl);
 }
 
 .project-card:hover::before {
@@ -64,7 +64,7 @@
   border-bottom-left-radius: 22px;
   font-size: 0.7rem;
   font-weight: 600;
-  background: light-dark(#0000000f, #ffffff0f);
+  background: var(--color-surface-project-badge);
   color: var(--text-muted);
   letter-spacing: 0.04em;
   border: 1px solid var(--bg-border);
@@ -120,9 +120,9 @@
   border-radius: 50px;
   font-size: 0.75rem;
   font-weight: 500;
-  background: light-dark(#ef404012, #ef40401a);
-  color: var(--c-red);
-  border: 1px solid light-dark(#ef404026, #ef404033);
+  background: var(--color-primary-surface-tag);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary-border-tag);
 }
 
 /* ── Projects responsive ─────────────────────────────────────── */

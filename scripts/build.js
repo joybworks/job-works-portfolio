@@ -16,7 +16,7 @@ const SRC = path.join(ROOT, 'src');
 const isServe = process.argv.includes('--serve');
 const OUT = isServe ? path.join(ROOT, 'dist') : path.join(ROOT, 'docs');
 
-// ── Section render order ───────────────────────────────────────
+// ── Section render order (CSS/JS bundles) ──────────────────────
 const SECTION_ORDER = [
   'navbar',
   'hero',
@@ -57,8 +57,20 @@ function sectionFile(name, ext) {
 /* ── HTML ────────────────────────────────────────────────────── */
 function buildHtml() {
   const layout = readFile(path.join(SRC, 'layout.html'));
-  const body = SECTION_ORDER
-    .map(name => readIfExists(sectionFile(name, 'html')))
+  const navbar = readIfExists(sectionFile('navbar', 'html'));
+  const mainInner = SECTION_ORDER
+    .slice(1, -1)
+    .map((name) => readIfExists(sectionFile(name, 'html')))
+    .filter(Boolean)
+    .join('\n');
+  const footer = readIfExists(sectionFile('footer', 'html'));
+  const body = [
+    navbar,
+    '<main id="main-content" tabindex="-1">',
+    mainInner,
+    '</main>',
+    footer,
+  ]
     .filter(Boolean)
     .join('\n');
   return layout.replace('<!--SECTIONS-->', body);
@@ -96,6 +108,14 @@ function contentHash(content) {
   return crypto.createHash('sha256').update(content).digest('hex').slice(0, 8);
 }
 
+/** CleanCSS keeps line breaks inside multiline custom properties; collapse to one line. */
+function compactCssSingleLine(css) {
+  return css
+    .replace(/\r?\n/g, '')
+    .replace(/[ \t\f\v]+/g, ' ')
+    .trim();
+}
+
 function minifyCustom(html) {
   return html.replace(/<script\s+type="application\/ld\+json"\s*>([\s\S]*?)<\/script>/gi, (match, jsonStr) => {
     try {
@@ -119,7 +139,11 @@ async function run() {
     cssFile = 'style.css';
     jsFile = 'main.js';
   } else {
-    cssContent = new CleanCSS({ level: 2 }).minify(cssRaw).styles;
+    const min = new CleanCSS({ level: 2 }).minify(cssRaw);
+    if (min.errors && min.errors.length) {
+      console.warn('CleanCSS errors:', min.errors);
+    }
+    cssContent = compactCssSingleLine(min.styles);
     const jsResult = await terser.minify(jsRaw, {
       compress: true,
       mangle: { toplevel: true },

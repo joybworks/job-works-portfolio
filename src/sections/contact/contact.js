@@ -70,6 +70,8 @@ function showFormFeedback(msg, type) {
 
   const el = document.createElement('p');
   el.className = `form-feedback form-feedback--${type}`;
+  el.setAttribute('role', 'status');
+  el.setAttribute('aria-live', 'polite');
   el.textContent = msg;
   el.style.cssText = `
     margin-top: 12px;

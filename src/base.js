@@ -78,8 +78,9 @@ const revealObserver = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.12,
-  rootMargin: '0px 0px -60px 0px'
+  /* Trigger while still approaching viewport; negative bottom was delaying reveal */
+  threshold: 0,
+  rootMargin: '0px 0px 12% 0px',
 });
 
 animatedEls.forEach(el => revealObserver.observe(el));
@@ -93,16 +94,21 @@ const cardObserver = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.1,
-  rootMargin: '0px 0px -40px 0px'
+  threshold: 0,
+  rootMargin: '0px 0px 10% 0px',
 });
 
-[...skillCards, ...projectCards].forEach((card, i) => {
-  card.style.opacity = '0';
-  card.style.transform = 'translateY(24px)';
-  card.style.transition = `opacity 0.5s ease ${i * 0.04}s, transform 0.5s ease ${i * 0.04}s`;
-  cardObserver.observe(card);
-});
+const reduceMotion = typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduceMotion) {
+  [...skillCards, ...projectCards].forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(16px)';
+    const delay = Math.min(i * 0.022, 0.2);
+    card.style.transition = `opacity 0.32s ease ${delay}s, transform 0.32s ease ${delay}s`;
+    cardObserver.observe(card);
+  });
+}
 
 // ── Lazy load skill images ─────────────────────────────────────
 if ('loading' in HTMLImageElement.prototype) {
@@ -121,7 +127,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
       const id = entry.target.getAttribute('id');
       navLinkEls.forEach(a => {
         a.style.color = '';
-        if (a.getAttribute('href') === `#${id}`) a.style.color = '#fff';
+        if (a.getAttribute('href') === `#${id}`) a.style.color = 'var(--color-accent)';
       });
     }
   });
@@ -169,3 +175,4 @@ function initDropdown(container) {
     });
   });
 }
+

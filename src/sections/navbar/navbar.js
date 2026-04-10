@@ -1,29 +1,31 @@
 // ── Navbar scroll behavior ─────────────────────────────────────
 const navbar = document.getElementById('navbar');
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 40) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-}, { passive: true });
+function updateNavbarScrolled() {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}
+
+window.addEventListener('scroll', updateNavbarScrolled, { passive: true });
+updateNavbarScrolled();
 
 // ── Mobile menu ────────────────────────────────────────────────
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
-navToggle.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
+function setMobileNavOpen(isOpen) {
+  navLinks.classList.toggle('open', isOpen);
   navToggle.classList.toggle('active', isOpen);
+  navToggle.setAttribute('aria-expanded', String(isOpen));
   document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+navToggle.addEventListener('click', () => {
+  setMobileNavOpen(!navLinks.classList.contains('open'));
 });
 
 // Close menu on link click
 navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navToggle.classList.remove('active');
-    document.body.style.overflow = '';
+    setMobileNavOpen(false);
   });
 });

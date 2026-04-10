@@ -28,7 +28,7 @@
   height: 44px;
   border-radius: var(--radius-sm);
   background: var(--grad-subtle);
-  border: 1px solid #ef404033;
+  border: 1px solid var(--color-primary-border-soft);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,7 +38,7 @@
 .contact-icon svg {
   width: 18px;
   height: 18px;
-  stroke: var(--c-red);
+  stroke: var(--color-primary);
 }
 
 .contact-label {
@@ -56,7 +56,7 @@
 }
 
 .contact-item a:hover {
-  color: var(--c-red);
+  color: var(--color-primary);
 }
 
 /* Social links in contact section */
@@ -90,21 +90,21 @@
 .social-link:hover {
   transform: translateY(-2px);
   color: var(--text-primary);
-  border-color: light-dark(#0000002e, #ffffff33);
+  border-color: var(--color-border-chip-hover);
 }
 
 .social-link.sl-linkedin:hover {
-  border-color: #0a66c280;
-  color: #0A66C2;
+  border-color: color-mix(in srgb, var(--color-social-linkedin) 50%, transparent);
+  color: var(--color-social-linkedin);
 }
 
 .social-link.sl-github:hover {
-  border-color: light-dark(#00000066, #ffffff66);
+  border-color: var(--color-border-chip-strong);
 }
 
 .social-link.sl-so:hover {
-  border-color: #f4802480;
-  color: #F48024;
+  border-color: color-mix(in srgb, var(--color-social-stackoverflow) 50%, transparent);
+  color: var(--color-social-stackoverflow);
 }
 
 .contact-availability {
@@ -113,18 +113,18 @@
   gap: 10px;
   margin-top: 20px;
   font-size: 0.88rem;
-  color: var(--c-green);
+  color: var(--color-success);
   padding: 10px 18px;
-  border: 1px solid #1dce6440;
+  border: 1px solid var(--color-success-border-muted);
   border-radius: 50px;
-  background: #1dce640d;
+  background: var(--color-success-surface-badge);
 }
 
 .avail-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--c-green);
+  background: var(--color-success);
   animation: pulse 2s ease-in-out infinite;
 }
 
@@ -134,7 +134,7 @@
   border: 1px solid var(--bg-border);
   border-radius: var(--radius-lg);
   padding: 36px;
-  box-shadow: 0 4px 20px light-dark(#00000012, #00000033);
+  box-shadow: var(--shadow-form);
 }
 
 .form-row {
@@ -178,8 +178,8 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #ef404080;
-  box-shadow: 0 0 0 3px #ef40401a;
+  border-color: var(--color-primary-focus-ring);
+  box-shadow: 0 0 0 3px var(--color-primary-focus-halo);
 }
 
 .form-note {
@@ -190,7 +190,7 @@
 }
 
 .form-note a {
-  color: var(--c-red);
+  color: var(--color-primary);
 }
 
 .btn-spinner {

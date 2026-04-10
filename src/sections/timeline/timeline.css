@@ -25,11 +25,11 @@
 }
 
 .dot-employment {
-  background: var(--c-orange);
+  background: var(--color-highlight);
 }
 
 .dot-freelance {
-  background: var(--c-green);
+  background: var(--color-success);
 }
 
 /* Dual layout — Freelancing LEFT | Employment RIGHT */
@@ -84,7 +84,7 @@
 .spine-line {
   width: 2px;
   height: 100%;
-  background: linear-gradient(to bottom, var(--bg-border) 0%, #ef40404d 40%, var(--bg-border) 100%);
+  background: linear-gradient(to bottom, var(--bg-border) 0%, var(--color-spine-accent) 40%, var(--bg-border) 100%);
   margin-top: 60px;
 }
 
@@ -94,10 +94,10 @@
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: var(--c-red);
+  color: var(--color-primary);
   background: var(--bg-surface);
   padding: 4px 6px;
-  border: 1px solid #ef404059;
+  border: 1px solid var(--color-spine-now-border);
   border-radius: 4px;
 }
 
@@ -120,15 +120,15 @@
 /* Freelancing is NOW on the LEFT — dot faces spine (right side of card) */
 .tl-freelance .tl-dot {
   right: -6px;
-  background: var(--c-green);
-  box-shadow: 0 0 12px #1dce6480;
+  background: var(--color-success);
+  box-shadow: 0 0 12px var(--color-success-glow-soft);
 }
 
 /* Employment is NOW on the RIGHT — dot faces spine (left side of card) */
 .tl-employment .tl-dot {
   left: -6px;
-  background: var(--c-orange);
-  box-shadow: 0 0 12px #ffa73280;
+  background: var(--color-highlight);
+  box-shadow: 0 0 12px var(--color-highlight-glow-soft);
 }
 
 .tl-card {
@@ -137,17 +137,17 @@
   border-radius: var(--radius-md);
   padding: 22px;
   transition: var(--tr);
-  box-shadow: 0 2px 8px light-dark(#0000000d, #00000026);
+  box-shadow: var(--shadow-sm);
 }
 
 .tl-card:hover {
-  border-color: light-dark(#00000024, #ffffff1f);
+  border-color: var(--color-border-card-hover);
   background: var(--bg-card-2);
 }
 
 .tl-current .tl-card {
-  border-color: #1dce6440;
-  background: light-dark(#1dce6408, #1dce6408);
+  border-color: var(--color-success-border-muted);
+  background: var(--color-success-surface-subtle);
 }
 
 .tl-company-logo {
@@ -170,16 +170,6 @@
   padding: 6px;
 }
 
-.placeholder-logo {
-  background: linear-gradient(135deg, #ef404026, #c2129226);
-}
-
-.placeholder-logo span {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-
 .tl-period {
   font-size: 0.78rem;
   color: var(--text-muted);
@@ -200,18 +190,18 @@
 }
 
 .tl-tag-emp {
-  background: #ffa73226;
-  color: var(--c-orange);
+  background: var(--color-highlight-surface-tag);
+  color: var(--color-highlight);
 }
 
 .tl-tag-free {
-  background: #1dce6426;
-  color: var(--c-green);
+  background: var(--color-success-surface-tag);
+  color: var(--color-success);
 }
 
 .tl-tag-active {
-  background: #1dce6433;
-  color: var(--c-green);
+  background: var(--color-success-surface-tag-strong);
+  color: var(--color-success);
 }
 
 .tl-role {
@@ -244,7 +234,7 @@
 
 .tl-role-item {
   padding-left: 14px;
-  border-left: 2px solid #ffa7324d;
+  border-left: 2px solid var(--color-highlight-border-accent);
 }
 
 .tl-role-item-title {

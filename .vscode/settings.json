@@ -57,7 +57,9 @@
     "**/.husky": true,
     "**/.claude": true,
     "**/.cursor": true,
-    "**/.vscode": true
+    "**/.vscode": true,
+    "cspell.json": true,
+    ".gitignore": true
   },
   "search.exclude": {
     "**/.history": true,

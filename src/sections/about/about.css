@@ -36,11 +36,11 @@
   padding: 28px 20px;
   text-align: center;
   transition: var(--tr);
-  box-shadow: 0 2px 12px light-dark(#0000000f, #00000033);
+  box-shadow: var(--shadow-md);
 }
 
 .stat-card:hover {
-  border-color: #ef40404d;
+  border-color: var(--color-primary-border-medium);
   transform: translateY(-4px);
 }
 
@@ -81,7 +81,7 @@
 }
 
 .value-tag:hover {
-  border-color: #ef404066;
+  border-color: var(--color-primary-border-strong);
   color: var(--text-primary);
 }
 

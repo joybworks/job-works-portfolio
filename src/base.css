@@ -5,37 +5,118 @@
 
 /* ── Variables ─────────────────────────────────────────────── */
 :root {
-  color-scheme: light dark;
+  /* ── Brand (source inks; theme-invariant) ─────────────────── */
+  --color-primary: #ef4040;
+  --color-accent: #c21292;
+  --color-success: #1dce64;
+  --color-highlight: #ffa732;
 
-  /* Brand palette (theme-invariant) */
-  --c-red: #EF4040;
-  --c-magenta: #C21292;
-  --c-green: #1DCE64;
-  --c-orange: #FFA732;
-  --c-pink: #EAB7DC;
+  /* Text / icons on primary gradient buttons, skip link */
+  --color-on-inverse: #ffffff;
 
-  /* Backgrounds */
+  /* Third-party brand (social chips) */
+  --color-social-linkedin: #0a66c2;
+  --color-social-stackoverflow: #f48024;
+
+  /* ── Surfaces & text (theme-aware) ────────────────────────── */
   --bg-base: light-dark(#f8f8f8, #0c0c0c);
   --bg-surface: light-dark(#efefef, #121212);
   --bg-card: light-dark(#ffffff, #1a1a1a);
   --bg-card-2: light-dark(#f4f4f4, #202020);
   --bg-border: light-dark(#00000017, #ffffff12);
 
-  /* Text */
   --text-primary: light-dark(#111111, #f0f0f0);
   --text-secondary: light-dark(#555555, #8a8a8a);
   --text-muted: light-dark(#999999, #505050);
-  --text-link: #EF4040;
 
-  /* Navbar scrolled glass */
   --nav-bg: light-dark(#f8f8f8eb, #0c0c0ceb);
 
-  /* Gradients */
-  --grad-primary: linear-gradient(135deg, #EF4040 0%, #C21292 100%);
-  --grad-green: linear-gradient(135deg, #1DCE64 0%, #FFA732 100%);
-  --grad-subtle-from: light-dark(#ef404012, #ef404026);
-  --grad-subtle-to: light-dark(#c2129212, #c2129226);
+  /* ── Gradients ────────────────────────────────────────────── */
+  --grad-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  --grad-subtle-from: light-dark(color-mix(in srgb, var(--color-primary) 7%, transparent),
+      color-mix(in srgb, var(--color-primary) 15%, transparent));
+  --grad-subtle-to: light-dark(color-mix(in srgb, var(--color-accent) 7%, transparent),
+      color-mix(in srgb, var(--color-accent) 15%, transparent));
   --grad-subtle: linear-gradient(135deg, var(--grad-subtle-from) 0%, var(--grad-subtle-to) 100%);
+
+  /* ── Primary-derived (CTA, focus, labels, tags) ──────────── */
+  --color-primary-border-faint: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  --color-primary-border-soft: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  --color-primary-border-medium: color-mix(in srgb, var(--color-primary) 35%, transparent);
+  --color-primary-border-strong: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  --color-primary-glow-button: color-mix(in srgb, var(--color-primary) 35%, transparent);
+  --color-primary-glow-button-hover: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  --color-primary-focus-ring: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  --color-primary-focus-halo: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  --color-primary-surface-tag: light-dark(color-mix(in srgb, var(--color-primary) 7%, transparent),
+      color-mix(in srgb, var(--color-primary) 10%, transparent));
+  --color-primary-border-tag: light-dark(color-mix(in srgb, var(--color-primary) 15%, transparent),
+      color-mix(in srgb, var(--color-primary) 20%, transparent));
+
+  /* ── Accent-derived (secondary emphasis, arch cards) ─────── */
+  --color-accent-border-strong: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  --color-accent-surface-subtle: light-dark(color-mix(in srgb, var(--color-accent) 7%, transparent),
+      color-mix(in srgb, var(--color-accent) 10%, transparent));
+  --color-accent-border-muted: light-dark(color-mix(in srgb, var(--color-accent) 15%, transparent),
+      color-mix(in srgb, var(--color-accent) 20%, transparent));
+
+  /* ── Success-derived (availability, timeline freelance) ─── */
+  --color-success-border-muted: color-mix(in srgb, var(--color-success) 25%, transparent);
+  --color-success-border-badge: color-mix(in srgb, var(--color-success) 30%, transparent);
+  --color-success-surface-subtle: color-mix(in srgb, var(--color-success) 8%, transparent);
+  --color-success-surface-badge: color-mix(in srgb, var(--color-success) 7%, transparent);
+  --color-success-glow-soft: color-mix(in srgb, var(--color-success) 50%, transparent);
+  --color-success-surface-tag: color-mix(in srgb, var(--color-success) 15%, transparent);
+  --color-success-surface-tag-strong: color-mix(in srgb, var(--color-success) 20%, transparent);
+
+  /* ── Highlight-derived (employment, orange accents) ───────── */
+  --color-highlight-glow-soft: color-mix(in srgb, var(--color-highlight) 50%, transparent);
+  --color-highlight-surface-tag: color-mix(in srgb, var(--color-highlight) 15%, transparent);
+  --color-highlight-border-accent: color-mix(in srgb, var(--color-highlight) 30%, transparent);
+
+  /* ── Neutral UI (chips, cards, outlines) ─────────────────── */
+  --color-border-interactive: light-dark(#00000033, #ffffff40);
+  --color-surface-hover: light-dark(#00000008, #ffffff12);
+  --color-border-chip-hover: light-dark(#0000002e, #ffffff33);
+  --color-border-chip-strong: light-dark(#00000066, #ffffff66);
+  --color-border-card-hover: light-dark(#00000024, #ffffff1f);
+  --color-surface-project-badge: light-dark(#0000000f, #ffffff0f);
+
+  /* ── Hero / photo aura ───────────────────────────────────── */
+  --color-hero-glow-primary: light-dark(color-mix(in srgb, var(--color-primary) 7%, transparent),
+      color-mix(in srgb, var(--color-primary) 12%, transparent));
+  --color-hero-glow-accent: light-dark(color-mix(in srgb, var(--color-accent) 5%, transparent),
+      color-mix(in srgb, var(--color-accent) 8%, transparent));
+  --color-photo-aura-1: light-dark(color-mix(in srgb, var(--color-primary) 32%, transparent),
+      color-mix(in srgb, var(--color-primary) 42%, transparent));
+  --color-photo-aura-2: light-dark(color-mix(in srgb, var(--color-accent) 20%, transparent),
+      color-mix(in srgb, var(--color-accent) 28%, transparent));
+  --color-photo-aura-3: light-dark(color-mix(in srgb, var(--color-accent) 6%, transparent),
+      color-mix(in srgb, var(--color-accent) 8%, transparent));
+  --shadow-photo-aura: 0 20px 60px light-dark(color-mix(in srgb, var(--color-primary) 14%, transparent),
+      color-mix(in srgb, var(--color-primary) 24%, transparent));
+  --shadow-photo-drop: drop-shadow(0 16px 40px light-dark(rgb(0 0 0 / 0.18), rgb(0 0 0 / 0.45)));
+
+  /* Decorative rings (hero photo) */
+  --color-ring-primary: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  --color-ring-accent: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  --color-ring-success: color-mix(in srgb, var(--color-success) 25%, transparent);
+  --color-ring-highlight: color-mix(in srgb, var(--color-highlight) 15%, transparent);
+
+  /* ── Elevation shadows (neutral) ─────────────────────────── */
+  --shadow-xs: 0 1px 4px light-dark(rgb(0 0 0 / 0.06), rgb(0 0 0 / 0.15));
+  --shadow-sm: 0 2px 8px light-dark(rgb(0 0 0 / 0.06), rgb(0 0 0 / 0.15));
+  --shadow-md: 0 2px 12px light-dark(rgb(0 0 0 / 0.06), rgb(0 0 0 / 0.2));
+  --shadow-lg: 0 12px 40px light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.4));
+  --shadow-xl: 0 20px 60px light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.4));
+  --shadow-dropdown: 0 10px 40px rgb(0 0 0 / 0.15);
+  --shadow-skip: 0 4px 20px rgb(0 0 0 / 0.2);
+  --shadow-form: 0 4px 20px light-dark(rgb(0 0 0 / 0.07), rgb(0 0 0 / 0.2));
+  --shadow-badge: 0 4px 20px light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.4));
+
+  /* Timeline spine accent */
+  --color-spine-accent: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  --color-spine-now-border: color-mix(in srgb, var(--color-primary) 35%, transparent);
 
   /* Layout */
   /* --container: 1200px; */
@@ -47,7 +128,6 @@
 
   /* Typography */
   --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Transitions */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
@@ -64,9 +144,53 @@
 }
 
 html {
+  color-scheme: light dark;
+  /* Document scroller is often the root element; pair with body for consistent snap. */
+  scroll-padding-top: 80px;
+  scroll-snap-type: y mandatory;
+}
+
+/*
+ * Document scroll: <main> and <footer> stay siblings; footer follows contact in normal flow.
+ * overflow-x only here (not on html) avoids Chromium snap quirks from root overflow.
+ */
+body {
+  min-height: 100%;
+  min-height: 100dvh;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
-  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Snap targets: major in-page sections (hero, about, skills, …) */
+section[id] {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/*
+ * Last section + mandatory snap: without a footer snap target, the scroll port snaps back
+ * to #contact. End-align finishes at the document bottom; normal stop avoids fighting #contact.
+ */
+#contact {
+  scroll-snap-stop: normal;
+}
+
+.footer {
+  scroll-snap-align: end;
+  scroll-snap-stop: normal;
+}
+
+
+
+html[theme="light"] {
+  color-scheme: light;
+}
+
+html[theme="dark"] {
+  color-scheme: dark;
 }
 
 body {
@@ -74,8 +198,29 @@ body {
   background: var(--bg-base);
   color: var(--text-primary);
   line-height: 1.7;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Skip link — keyboard / screen reader entry to primary content */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10001;
+  padding: 12px 20px;
+  background: var(--grad-primary);
+  color: var(--color-on-inverse);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  box-shadow: var(--shadow-skip);
+}
+
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+  outline: 2px solid var(--color-on-inverse);
+  outline-offset: 3px;
 }
 
 img {
@@ -122,7 +267,7 @@ input {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--c-red);
+  color: var(--color-primary);
   margin-bottom: 14px;
 }
 
@@ -153,24 +298,43 @@ input {
   background-clip: text;
 }
 
-/* ── Logo light/dark swap ───────────────────────────────────── */
-.logo-light {
+/* ── Image light/dark swap ───────────────────────────────────── */
+html[theme="light"] .img-swap-light {
   display: block;
 }
 
-.logo-dark {
+html[theme="light"] .img-swap-dark {
+  display: none;
+}
+
+html[theme="dark"] .img-swap-dark {
+  display: block;
+}
+
+html[theme="dark"] .img-swap-light {
+  display: none;
+}
+
+html[theme="system"] .img-swap-light {
+  display: block;
+}
+
+html[theme="system"] .img-swap-dark {
   display: none;
 }
 
 @media (prefers-color-scheme: dark) {
-  .logo-light {
+  html[theme="system"] .img-swap-light {
     display: none;
   }
 
-  .logo-dark {
+  html[theme="system"] .img-swap-dark {
     display: block;
   }
 }
+
+
+
 
 /* ── Buttons ────────────────────────────────────────────────── */
 .btn {
@@ -187,13 +351,13 @@ input {
 
 .btn-primary {
   background: var(--grad-primary);
-  color: #fff;
-  box-shadow: 0 4px 20px #ef404059;
+  color: var(--color-on-inverse);
+  box-shadow: 0 4px 20px var(--color-primary-glow-button);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px #ef404080;
+  box-shadow: 0 8px 30px var(--color-primary-glow-button-hover);
 }
 
 .btn-outline {
@@ -203,8 +367,8 @@ input {
 }
 
 .btn-outline:hover {
-  border-color: light-dark(#00000033, #ffffff40);
-  background: light-dark(#0000000a, #ffffff0a);
+  border-color: var(--color-border-interactive);
+  background: var(--color-surface-hover);
   transform: translateY(-2px);
 }
 
@@ -234,7 +398,7 @@ input {
   background: var(--bg-card);
   border: 1px solid var(--bg-border);
   border-radius: var(--radius-sm);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-dropdown);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-2px);
@@ -263,35 +427,57 @@ input {
 }
 
 .dropdown-menu a:hover {
-  background: light-dark(#00000008, #ffffff12);
-  color: var(--c-magenta);
+  background: var(--color-surface-hover);
+  color: var(--color-accent);
 }
 
-/* ── Scroll animations (base) ───────────────────────────────── */
+/* ── Scroll animations (base) — short + early IO so fast scroll isn’t blank ── */
 [data-animate] {
   opacity: 0;
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transition: opacity 0.38s var(--ease), transform 0.38s var(--ease);
 }
 
 [data-animate="fade-up"] {
-  transform: translateY(40px);
-}
-
-[data-animate="fade-down"] {
-  transform: translateY(-40px);
+  transform: translateY(22px);
 }
 
 [data-animate="fade-left"] {
-  transform: translateX(-40px);
+  transform: translateX(-22px);
 }
 
 [data-animate="fade-right"] {
-  transform: translateX(40px);
+  transform: translateX(22px);
 }
 
 [data-animate].in-view {
   opacity: 1;
   transform: translate(0, 0);
+}
+
+/*
+ * Above-the-fold hero must paint without waiting on JS (FCP, Lighthouse, no-JS).
+ * Scroll-reveal for sections below still uses [data-animate] + IntersectionObserver.
+ */
+#hero [data-animate] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none;
+  }
+
+  body {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+
+  [data-animate] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ── Global responsive ──────────────────────────────────────── */

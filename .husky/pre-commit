@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
+npm run spelling-bee
 npm run build
 git add docs/

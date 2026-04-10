@@ -29,19 +29,19 @@
 }
 
 .dot-red {
-  background: var(--c-red);
+  background: var(--color-primary);
 }
 
 .dot-green {
-  background: var(--c-green);
+  background: var(--color-success);
 }
 
 .dot-orange {
-  background: var(--c-orange);
+  background: var(--color-highlight);
 }
 
 .dot-magenta {
-  background: var(--c-magenta);
+  background: var(--color-accent);
 }
 
 .skills-grid {
@@ -49,11 +49,6 @@
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   justify-content: center;
   gap: 12px;
-}
-
-.skills-grid-minor {
-  grid-template-columns: repeat(auto-fill, minmax(94px, 1fr));
-  justify-content: center;
 }
 
 .skills-grid-arch {
@@ -72,14 +67,14 @@
   gap: 12px;
   transition: var(--tr);
   cursor: default;
-  box-shadow: 0 1px 4px light-dark(#0000000f, #00000026);
+  box-shadow: var(--shadow-xs);
 }
 
 .skill-card:hover {
-  border-color: #ef404059;
+  border-color: var(--color-primary-border-soft);
   background: var(--bg-card-2);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px light-dark(#0000001a, #00000066);
+  box-shadow: var(--shadow-lg);
 }
 
 .skill-card img {
@@ -126,7 +121,7 @@
 }
 
 .arch-card:hover {
-  border-color: #c2129259;
+  border-color: var(--color-accent-border-strong);
 }
 
 .arch-icon {
@@ -137,9 +132,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: light-dark(#c2129212, #c212921a);
+  background: var(--color-accent-surface-subtle);
   border-radius: var(--radius-sm);
-  border: 1px solid light-dark(#c2129226, #c2129233);
+  border: 1px solid var(--color-accent-border-muted);
 }
 
 /* Previously Worked With — compact tag cloud */
@@ -162,7 +157,7 @@
 
 .prev-tag:hover {
   color: var(--text-secondary);
-  border-color: #ffa73240;
+  border-color: var(--color-highlight-border-accent);
 }
 
 /* ── Skills card stagger delays ─────────────────────────────── */

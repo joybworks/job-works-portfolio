@@ -69,7 +69,7 @@
 
 .nav-cta {
   background: var(--grad-primary) !important;
-  color: #fff !important;
+  color: var(--color-on-inverse) !important;
   padding: 9px 20px;
   border-radius: var(--radius-sm);
 }

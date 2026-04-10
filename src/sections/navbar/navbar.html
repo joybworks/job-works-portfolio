@@ -1,17 +1,18 @@
 <!-- ░░░ NAVBAR ░░░ -->
 <nav class="navbar"
-  id="navbar">
+  id="navbar"
+  aria-label="Primary">
   <div class="nav-container">
     <a href="#hero"
       class="nav-logo">
       <img src="assets/images/logo-tag-black.svg"
         alt="JoyB Works"
         height="50"
-        class="logo-light" />
+        class="img-swap-light" />
       <img src="assets/images/logo-tag-white.svg"
         alt="JoyB Works"
         height="50"
-        class="logo-dark" />
+        class="img-swap-dark" />
     </a>
     <ul class="nav-links"
       id="navLinks">
@@ -22,9 +23,12 @@
       <li><a href="#contact"
           class="nav-cta">Hire Me</a></li>
     </ul>
-    <button class="nav-toggle"
+    <button type="button"
+      class="nav-toggle"
       id="navToggle"
-      aria-label="Toggle navigation">
+      aria-label="Toggle navigation"
+      aria-controls="navLinks"
+      aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
