@@ -212,6 +212,7 @@
   position: relative;
   width: 380px;
   height: 420px;
+  cursor: pointer;
 }
 
 /* Subtle glow circle base — hint of brand color, not solid */
@@ -249,7 +250,14 @@
   z-index: 2;
   filter: var(--shadow-photo-drop);
   clip-path: path('M 0 0 L 300 0 L 300 250 A 150 150 0 1 1 0 250 Z');
+  transition: transform 0.3s var(--ease), filter 0.3s var(--ease);
+  will-change: transform;
 }
+
+.hero-photo:hover {
+  transform: translateX(-50%) translateY(-8px) scale(1.06);
+}
+
 
 /* Spinning rings — centred on circle (frame_h − r = 420 − 150 = 270px from top) */
 .photo-ring {

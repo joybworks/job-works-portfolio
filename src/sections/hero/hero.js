@@ -52,3 +52,19 @@ if (badgeArch) {
   badgeArch.addEventListener('pointerleave', () => runRandomThemeGenerator(false));
   badgeArch.addEventListener('click', () => randomThemeSelectedMode = !randomThemeSelectedMode);
 }
+
+const heroPhotoFrame = document.querySelector('.hero .hero-photo-frame');
+if (heroPhotoFrame) {
+  heroPhotoFrame.addEventListener('click', (event) => {
+    if (!event.target.classList.contains('hero-photo')) return;
+    const root = document.documentElement;
+    const currentTheme = root.getAttribute('theme') || 'system';
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const nextTheme = currentTheme === 'light'
+      ? 'dark'
+      : currentTheme === 'dark'
+        ? 'light'
+        : (prefersDark ? 'light' : 'dark'); // current theme is system, use prefers mode to determine next
+    root.setAttribute('theme', nextTheme);
+  });
+}
